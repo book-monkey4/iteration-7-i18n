@@ -1,14 +1,23 @@
-import { BookMonkeyPage } from './app.po';
+import { AppPage } from './app.po';
+import { browser, logging } from 'protractor';
 
-describe('book-monkey App', () => {
-  let page: BookMonkeyPage;
+describe('workspace-project App', () => {
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new BookMonkeyPage();
+    page = new AppPage();
   });
 
   it('should display message saying app works', () => {
     page.navigateTo();
     expect(page.getHeaderText()).toBe('Home');
+  });
+
+  afterEach(async () => {
+    // Assert that there are no errors emitted from the browser
+    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    expect(logs).not.toContain(jasmine.objectContaining({
+      level: logging.Level.SEVERE,
+    } as logging.Entry));
   });
 });
