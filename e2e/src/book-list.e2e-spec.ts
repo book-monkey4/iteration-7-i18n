@@ -18,7 +18,7 @@ describe('Book List Page', () => {
     const detailsPage = listPage.navigateTo()
       .clickOnFirstBook();/*BE*/
     expect(detailsPage.getUrl())
-      .toContain('/books/9783864906466');
+      .toContain('/books/9783864907791');
     expect(detailsPage.getHeaderText()).toBe('Angular');
   });
 });
